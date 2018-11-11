@@ -26,7 +26,7 @@ Handlebars.registerHelper('link', function(object) {
 app.set('view engine', 'hbs');
 
 app.use('/countries', require('./routers/countries'));
-//app.use('/cities', require('./routers/cities'));
+app.use('/cities', require('./routers/cities'));
 
 app.get('/', (req, res) => {
 	console.log(req.url);
