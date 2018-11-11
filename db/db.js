@@ -8,10 +8,14 @@ module.exports = (Sequelize, config)=>
 		host: config.host,
 		dialect: config.dialect,
 		logging: false,
+		port: config.port,
 		define: {
 			timestamps: false,
 			paranoid: false,
 			freezeTableName: true
+		},
+		options: {
+			instanceName: config.dialectOptions.instanceName
 		}
 	});
 
@@ -21,7 +25,6 @@ module.exports = (Sequelize, config)=>
 
 	country.hasMany(city, {foreignKey: 'CountryCode', primaryKey: 'Code'});
 	country.hasMany(countryLanguage, {foreignKey: 'CountryCode', primaryKey: 'Code'});
-
 
 	return {
 		city,

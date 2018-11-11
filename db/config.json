@@ -1,7 +1,7 @@
 {
-  "db": "features",
-  "login": "admin_cwp14",
-  "password": "cwp14",
+  "db": "world",
+  "login": "admin_cwp20",
+  "password": "cwp20",
   "port": 1433,
   "host": "ANDREICHAYEUSKI",
   "dialect": "mssql",
