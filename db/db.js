@@ -1,8 +1,9 @@
 const City = require('./models/city');
 const Country = require('./models/country');
 const CountryLanguage = require('./models/countryLanguage');
+const config = require('./config.json');
 
-module.exports = (Sequelize, config)=>
+module.exports = (Sequelize)=>
 {
 	const sequelize = new Sequelize(config.db, config.login, config.password, {
 		host: config.host,

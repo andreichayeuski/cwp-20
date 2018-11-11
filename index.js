@@ -1,9 +1,8 @@
 const express = require('express');
 const Sequelize = require('sequelize');
-const config = require('./db/config.json');
 const hbs = require('express-handlebars');
 const Handlebars = require('handlebars');
-const db = require('./db/db')(Sequelize, config);
+const db = require('./db/db')(Sequelize);
 
 const app = express();
 
@@ -13,6 +12,7 @@ app.engine('hbs', hbs({
 	layoutsDir: __dirname + '/views/layouts/',
 	partialsDir: __dirname + '/views/partials/'
 }));
+
 
 Handlebars.registerHelper('link', function(object) {
 	var url = Handlebars.escapeExpression(object.url),
@@ -24,6 +24,9 @@ Handlebars.registerHelper('link', function(object) {
 });
 
 app.set('view engine', 'hbs');
+
+app.use('/countries', require('./routers/countries'));
+//app.use('/cities', require('./routers/cities'));
 
 app.get('/', (req, res) => {
 	console.log(req.url);
@@ -48,7 +51,11 @@ app.get('/', (req, res) => {
 			res.render('index');
 		});
 	});
+});
 
+app.get('/countries.html', (req, res) =>
+{
+	res.render('countries');
 });
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
