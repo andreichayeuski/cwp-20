@@ -22,7 +22,7 @@ module.exports = (sequelize, connection) =>{
 			},
 		Percentage:
 			{
-				type: sequelize.FLOAT(4,1),
+				type: sequelize.FLOAT,
 				allowNull: false,
 				defaultValue: 0.0
 			}
